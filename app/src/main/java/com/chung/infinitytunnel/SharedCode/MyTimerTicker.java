@@ -1,4 +1,6 @@
-package com.chung.infinitytunnel;
+package com.chung.infinitytunnel.SharedCode;
+import com.chung.infinitytunnel.Character1.Character1;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -33,7 +35,7 @@ public class MyTimerTicker {
         listener.onTick();
     }
 
-    public void setListener(MySurfaceView mySurfaceView) {
-        this.listener = mySurfaceView;
+    public void setListener(Character1 character1) {
+        this.listener = character1;
     }
 }

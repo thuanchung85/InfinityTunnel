@@ -1,10 +1,9 @@
-package com.chung.infinitytunnel;
+package com.chung.infinitytunnel.Character1;
 
 import static android.content.ContentValues.TAG;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -16,25 +15,30 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+
+import com.chung.infinitytunnel.SharedCode.MyTimerTicker;
+import com.chung.infinitytunnel.R;
+import com.chung.infinitytunnel.SharedCode.TimerTickerListener;
 
 import java.util.ArrayList;
-import java.util.Random;
 
-public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback , TimerTickerListener, View.OnClickListener {
+public class Character1 extends SurfaceView implements SurfaceHolder.Callback , TimerTickerListener, View.OnClickListener
+{
     private final Paint paint;
     private boolean running = true;
 
     Point centerOfCanvas;
 
-    private MyTimerTicker myTimerTicker;
+    private final MyTimerTicker myTimerTicker;
 
-    private ArrayList<Bitmap> array_bitmaps = new ArrayList<>() ;
+    private final ArrayList<Bitmap> array_bitmaps = new ArrayList<>() ;
     private int nextIndex = 0;
     Bitmap currentBMP ;
 
 
-    public MySurfaceView(Context context) {
+    public Character1(Context context) {
         super(context);
         getHolder().addCallback(this);
         paint = new Paint();
@@ -121,7 +125,7 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
     }
 
     @Override
-    public void surfaceCreated(SurfaceHolder holder)
+    public void surfaceCreated(@NonNull SurfaceHolder holder)
     {
 
 
@@ -145,29 +149,24 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
                         int right = centerOfCanvas.x + (rectW / 2);
                         int bottom = centerOfCanvas.y + (rectH / 2);
                         Rect rect = new Rect(left, top, right, bottom);
-                        
-                       // canvas.drawRect(rect, paint); // Vẽ một hình chữ nhật đỏ
+
                         canvas.drawBitmap(currentBMP, null, rect, paint);
                     } finally {
                         holder.unlockCanvasAndPost(canvas);
                     }
                 }
-                try {
-                    Thread.sleep(16); // Khoảng 60 FPS
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+
             }
         }).start();
     }
 
     @Override
-    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+    public void surfaceChanged(@NonNull SurfaceHolder holder, int format, int width, int height) {
         // Xử lý thay đổi kích thước hoặc định dạng nếu cần
     }
 
     @Override
-    public void surfaceDestroyed(SurfaceHolder holder) {
+    public void surfaceDestroyed(@NonNull SurfaceHolder holder) {
         running = false; // Dừng luồng vẽ khi SurfaceView bị hủy
         if (myTimerTicker != null) {
             myTimerTicker.stop();

@@ -1,27 +1,27 @@
-package com.chung.infinitytunnel;
+package com.chung.infinitytunnel.BackGroundLoop;
 
 import android.content.Context;
 import android.net.Uri;
 import android.util.AttributeSet;
-import android.widget.MediaController;
 import android.widget.VideoView;
-import android.media.MediaPlayer;
+
+import com.chung.infinitytunnel.R;
 
 import java.util.Random;
 
-public class CustomVideoView extends VideoView {
+public class BackgroundVideo extends VideoView {
 
-    public CustomVideoView(Context context) {
+    public BackgroundVideo(Context context) {
         super(context);
         init();
     }
 
-    public CustomVideoView(Context context, AttributeSet attrs) {
+    public BackgroundVideo(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public CustomVideoView(Context context, AttributeSet attrs, int defStyle) {
+    public BackgroundVideo(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init();
     }
@@ -39,7 +39,7 @@ public class CustomVideoView extends VideoView {
         });
     }
 
-    public void ShowRandom(int max, String getPackageName, Context c){
+    public void ShowRandom(int max, String getPackageName){
         Uri videoUri;
         // Đường dẫn đến video trong thư mục res/raw
         int randomIndex = new Random().nextInt(max);
@@ -73,8 +73,6 @@ public class CustomVideoView extends VideoView {
 
 
         // Thiết lập MediaController để điều khiển video (tùy chọn)
-        //MediaController mediaController = new MediaController(c);
-        //mediaController.setAnchorView(this);
         this.setMediaController(null);
 
         // Thiết lập URI của video

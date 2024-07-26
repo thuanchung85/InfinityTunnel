@@ -1,23 +1,16 @@
 package com.chung.infinitytunnel;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.MediaController;
-import android.widget.VideoView;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.Random;
-
-public class MainActivity extends AppCompatActivity {
+import com.chung.infinitytunnel.BackGroundLoop.BackgroundVideo;
+import com.chung.infinitytunnel.Character1.Character1;
 
 
+public class MainActivity extends AppCompatActivity
+{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,23 +19,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
         //==hình nền chạy hiệu ứng tunnel loop infinity==//
-        CustomVideoView videoView = findViewById(R.id.videoView);
-        videoView.ShowRandom(8,getPackageName(),this);
+        BackgroundVideo videoView = findViewById(R.id.videoView);
+        videoView.ShowRandom(8,getPackageName());
 
 
         // Tạo một thể hiện của MySurfaceView
-        MySurfaceView mySurfaceView = new MySurfaceView(this);
-        mySurfaceView.setClickable(true);
+        Character1 character1 = new Character1(this);
+        character1.setClickable(true);
 
         //click tren nhan vat
-        mySurfaceView.setOnClickListener(v -> Log.d("TAG", "onClick: "));
+        character1.setOnClickListener(v -> Log.d("TAG", "onClick: "));
 
         // Lấy FrameLayout từ layout
         FrameLayout frameLayout = findViewById(R.id.frameLayout);
         // Thêm MySurfaceView vào FrameLayout
-        frameLayout.addView(mySurfaceView);
+        frameLayout.addView(character1);
 
     }
 
