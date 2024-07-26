@@ -51,8 +51,9 @@ public class Character1 extends SurfaceView implements SurfaceHolder.Callback , 
 
 
         // Nạp hình ảnh từ tệp vào Bitmap
-        Bitmap bitmap = android.graphics.BitmapFactory.decodeResource(getResources(), R.drawable.f1);
+        Bitmap bitmap = android.graphics.BitmapFactory.decodeResource(getResources(), R.drawable.character_f1);
         array_bitmaps.add(bitmap);
+        /*
         Bitmap bitmap2 = android.graphics.BitmapFactory.decodeResource(getResources(), R.drawable.f2);
         array_bitmaps.add(bitmap2);
         Bitmap bitmap3 = android.graphics.BitmapFactory.decodeResource(getResources(), R.drawable.f3);
@@ -115,6 +116,8 @@ public class Character1 extends SurfaceView implements SurfaceHolder.Callback , 
         array_bitmaps.add(bitmap31);
         Bitmap bitmap32 = android.graphics.BitmapFactory.decodeResource(getResources(), R.drawable.f32);
         array_bitmaps.add(bitmap32);
+
+         */
         currentBMP= array_bitmaps.get(0);
 
 
@@ -142,8 +145,8 @@ public class Character1 extends SurfaceView implements SurfaceHolder.Callback , 
                     try {
                         canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR); // Clear canvas với màu trong suốt
 
-                        int rectW = 1000;
-                        int rectH = 1000;
+                        int rectW = 1200;
+                        int rectH = 1200;
                         int left = centerOfCanvas.x - (rectW / 2);
                         int top = centerOfCanvas.y - (rectH / 2);
                         int right = centerOfCanvas.x + (rectW / 2);
