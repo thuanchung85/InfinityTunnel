@@ -2,8 +2,10 @@ package com.chung.infinitytunnel;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.MediaController;
 import android.widget.VideoView;
@@ -32,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
 
         // Tạo một thể hiện của MySurfaceView
         MySurfaceView mySurfaceView = new MySurfaceView(this);
+        mySurfaceView.setClickable(true);
+
+        //click tren nhan vat
+        mySurfaceView.setOnClickListener(v -> Log.d("TAG", "onClick: "));
+
         // Lấy FrameLayout từ layout
         FrameLayout frameLayout = findViewById(R.id.frameLayout);
         // Thêm MySurfaceView vào FrameLayout

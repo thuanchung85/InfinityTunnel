@@ -29,7 +29,7 @@ public class MyTimerTicker {
 
     private void onTick() {
         // Implement your periodic task here
-        System.out.println("Tick");
+        //System.out.println("Tick");
         listener.onTick();
     }
 
