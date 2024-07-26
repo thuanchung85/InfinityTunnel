@@ -73,9 +73,9 @@ public class CustomVideoView extends VideoView {
 
 
         // Thiết lập MediaController để điều khiển video (tùy chọn)
-        MediaController mediaController = new MediaController(c);
-        mediaController.setAnchorView(this);
-        this.setMediaController(mediaController);
+        //MediaController mediaController = new MediaController(c);
+        //mediaController.setAnchorView(this);
+        this.setMediaController(null);
 
         // Thiết lập URI của video
         this.setVideoURI(videoUri);
@@ -85,5 +85,6 @@ public class CustomVideoView extends VideoView {
 
         // Bắt đầu phát video
         this.start();
+
     }
 }
