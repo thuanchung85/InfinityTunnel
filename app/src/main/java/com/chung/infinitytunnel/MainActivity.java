@@ -1,12 +1,16 @@
 package com.chung.infinitytunnel;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import com.chung.infinitytunnel.BackGroundLoop.BackgroundVideo;
 import com.chung.infinitytunnel.Character1.Character1;
+import com.chung.infinitytunnel.SharedCode.CommonFunction;
 
 
 public class MainActivity extends AppCompatActivity
@@ -36,6 +40,8 @@ public class MainActivity extends AppCompatActivity
         // Thêm MySurfaceView vào FrameLayout
         frameLayout.addView(character1);
 
+        //setup full screen game
+        CommonFunction.FullScreencall( getWindow());
     }
 
 
