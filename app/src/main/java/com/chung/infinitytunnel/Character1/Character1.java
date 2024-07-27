@@ -31,9 +31,6 @@ public class Character1 extends CharacterGOC
     public Character1(Context context) {
         super(context);
         getHolder().addCallback(this);
-        paint = new Paint();
-        paint.setColor(Color.RED);
-        paint.setStyle(Paint.Style.FILL);
         setZOrderOnTop(true); // Đặt SurfaceView lên trên VideoView
         getHolder().setFormat(PixelFormat.TRANSLUCENT); // Đặt nền của SurfaceView là trong suốt
 
@@ -82,7 +79,7 @@ public class Character1 extends CharacterGOC
                         int bottom = centerOfCanvas.y + (rectH / 2);
                         Rect rect = new Rect(left, top, right, bottom);
 
-                        canvas.drawBitmap(currentBMP, null, rect, paint);
+                        canvas.drawBitmap(currentBMP, null, rect, null);
                     } finally {
                         holder.unlockCanvasAndPost(canvas);
                     }

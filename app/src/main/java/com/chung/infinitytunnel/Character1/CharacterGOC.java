@@ -26,7 +26,6 @@ import java.util.ArrayList;
 
 public abstract class CharacterGOC extends SurfaceView implements SurfaceHolder.Callback , TimerTickerListener, View.OnClickListener
 {
-    Paint paint;
     boolean running = true;
     Point centerOfCanvas;
 

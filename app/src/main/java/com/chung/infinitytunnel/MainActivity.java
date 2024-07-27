@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity
         character2.setOnClickListener(v -> Log.d("TAG", "onClick character2: "));
 
 
-        ADD_Character(character2);
+        ADD_Character(character1);
 
 
 
