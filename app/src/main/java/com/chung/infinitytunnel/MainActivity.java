@@ -24,30 +24,18 @@ public class MainActivity extends AppCompatActivity
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
          frameLayout = findViewById(R.id.frameLayout);
-        //setup full screen game
         CommonFunction.FullScreencall( getWindow());
-
 
 
         //==hình nền chạy hiệu ứng tunnel loop infinity==//
         BackgroundVideo videoView = findViewById(R.id.videoView);
         videoView.ShowRandom(8,getPackageName());
 
-
-        // Tạo character1
-        Character1 character1 = new Character1(this);
-        character1.setClickable(true);
-        //click tren nhan vat
-        character1.setOnClickListener(v -> Log.d("TAG", "onClick character1: "));
-
-        // Tạo character2
-        Character2 character2 = new Character2(this);
-        character2.setClickable(true);
-        //click tren nhan vat
-        character2.setOnClickListener(v -> Log.d("TAG", "onClick character2: "));
+        //==tao character o giua===//
+        MAKE_Character(1);
 
 
-        ADD_Character(character1);
+
 
 
 
@@ -55,6 +43,37 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+
+//=======================PRIVATE ZONE==================//
+private void MAKE_Character(int n)
+{
+        switch (n){
+            case 1:
+                // Tạo character1
+                Character1 character1 = new Character1(this);
+                character1.setClickable(true);
+                //click tren nhan vat
+                character1.setOnClickListener(v -> Log.d("TAG", "onClick character1: "));
+                ADD_Character(character1);
+                break;
+
+            case 2:
+                // Tạo character2
+                Character2 character2 = new Character2(this);
+                character2.setClickable(true);
+                //click tren nhan vat
+                character2.setOnClickListener(v -> Log.d("TAG", "onClick character2: "));
+                ADD_Character(character2);
+                break;
+
+            default:
+                break;
+        }
+
+}
+
+
+//hàm gắn character lên frame layout và run timer tick
 private void ADD_Character(CharacterGOC c){
     // Thêm MySurfaceView vào FrameLayout
     frameLayout.addView(c);

@@ -109,8 +109,5 @@ public class Character2 extends CharacterGOC
 
     }
 
-    @Override
-    public void onClick(View v) {
-        Log.d(TAG, "onClick: ");
-    }
+
 }

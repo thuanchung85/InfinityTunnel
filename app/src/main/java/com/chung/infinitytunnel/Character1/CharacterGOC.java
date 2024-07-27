@@ -24,7 +24,7 @@ import com.chung.infinitytunnel.SharedCode.TimerTickerListener;
 
 import java.util.ArrayList;
 
-public abstract class CharacterGOC extends SurfaceView implements SurfaceHolder.Callback , TimerTickerListener, View.OnClickListener
+public abstract class CharacterGOC extends SurfaceView implements SurfaceHolder.Callback , TimerTickerListener
 {
     boolean running = true;
     Point centerOfCanvas;
