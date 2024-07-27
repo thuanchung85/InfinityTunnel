@@ -1,23 +1,21 @@
 package com.chung.infinitytunnel;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import com.chung.infinitytunnel.BackGroundLoop.BackgroundVideo;
-import com.chung.infinitytunnel.Character1.Character1;
-import com.chung.infinitytunnel.Character1.Character2;
-import com.chung.infinitytunnel.Character1.CharacterGOC;
+import com.chung.infinitytunnel.Characters.Character1;
+import com.chung.infinitytunnel.Characters.Character2;
+import com.chung.infinitytunnel.Characters.CharacterGOC;
+import com.chung.infinitytunnel.Characters.CharacterManager;
 import com.chung.infinitytunnel.SharedCode.CommonFunction;
 
 
 public class MainActivity extends AppCompatActivity
 {
     FrameLayout frameLayout;
+    CharacterManager characterManager ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,8 +30,8 @@ public class MainActivity extends AppCompatActivity
         videoView.ShowRandom(8,getPackageName());
 
         //==tao character o giua===//
-        MAKE_Character(1);
-
+        characterManager = new CharacterManager(this,frameLayout);
+        characterManager.MAKE_Character(2);
 
 
 
@@ -44,42 +42,6 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-//=======================PRIVATE ZONE==================//
-private void MAKE_Character(int n)
-{
-        switch (n){
-            case 1:
-                // Tạo character1
-                Character1 character1 = new Character1(this);
-                character1.setClickable(true);
-                //click tren nhan vat
-                character1.setOnClickListener(v -> Log.d("TAG", "onClick character1: "));
-                ADD_Character(character1);
-                break;
 
-            case 2:
-                // Tạo character2
-                Character2 character2 = new Character2(this);
-                character2.setClickable(true);
-                //click tren nhan vat
-                character2.setOnClickListener(v -> Log.d("TAG", "onClick character2: "));
-                ADD_Character(character2);
-                break;
-
-            default:
-                break;
-        }
-
-}
-
-
-//hàm gắn character lên frame layout và run timer tick
-private void ADD_Character(CharacterGOC c){
-    // Thêm MySurfaceView vào FrameLayout
-    frameLayout.addView(c);
-    //khoi dong update timer cho character 1
-    c.start_UpdateLoopWithTimerTick();
-
-}
 
 }//end class

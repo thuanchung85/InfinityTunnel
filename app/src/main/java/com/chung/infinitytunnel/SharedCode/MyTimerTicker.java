@@ -1,8 +1,6 @@
 package com.chung.infinitytunnel.SharedCode;
-import android.util.Log;
 
-import com.chung.infinitytunnel.Character1.Character1;
-import com.chung.infinitytunnel.Character1.CharacterGOC;
+import com.chung.infinitytunnel.Characters.CharacterGOC;
 
 import java.util.Timer;
 import java.util.TimerTask;

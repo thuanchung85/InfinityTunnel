@@ -1,57 +1,52 @@
-package com.chung.infinitytunnel.Character1;
-
-import static android.content.ContentValues.TAG;
+package com.chung.infinitytunnel.Characters;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.PixelFormat;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
-import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 
 import com.chung.infinitytunnel.SharedCode.MyTimerTicker;
-import com.chung.infinitytunnel.R;
 import com.chung.infinitytunnel.SharedCode.TimerTickerListener;
 
 import java.util.ArrayList;
 
-public class Character1 extends CharacterGOC
+public abstract class CharacterGOC extends SurfaceView implements SurfaceHolder.Callback , TimerTickerListener
 {
+    boolean running = true;
+    Point centerOfCanvas;
 
+    MyTimerTicker myTimerTicker;
 
-    public Character1(Context context) {
+    ArrayList<Bitmap> array_bitmaps = new ArrayList<>() ;
+    int nextIndex = 0;
+    Bitmap currentBMP ;
+    int rectW = 1;
+    int rectH = 1;
+
+    public CharacterGOC(Context context) {
         super(context);
         getHolder().addCallback(this);
-        setZOrderOnTop(true); // Đặt SurfaceView lên trên VideoView
-        getHolder().setFormat(PixelFormat.TRANSLUCENT); // Đặt nền của SurfaceView là trong suốt
 
 
 
-
-        // Nạp hình ảnh từ tệp vào Bitmap
-        Bitmap bitmap = android.graphics.BitmapFactory.decodeResource(getResources(), R.drawable.character_f1);
-        array_bitmaps.add(bitmap);
-
-        Bitmap bitmap2 = android.graphics.BitmapFactory.decodeResource(getResources(), R.drawable.character_f2);
-        array_bitmaps.add(bitmap2);
-
-
-
-        currentBMP= array_bitmaps.get(0);
-
-        //active timer
-        myTimerTicker = new MyTimerTicker();
-        myTimerTicker.setListener(this);
     }
+
+    public void start_UpdateLoopWithTimerTick()
+    {
+        myTimerTicker.start(150); // Ticker mỗi 1 giây
+    }
+    public void stop_UpdateLoopWithTimerTick(){
+        myTimerTicker.stop();
+    }
+
+
 
     @Override
     public void surfaceCreated(@NonNull SurfaceHolder holder)
@@ -71,8 +66,7 @@ public class Character1 extends CharacterGOC
                     try {
                         canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR); // Clear canvas với màu trong suốt
 
-                        int rectW = 1200;
-                        int rectH = 1200;
+
                         int left = centerOfCanvas.x - (rectW / 2);
                         int top = centerOfCanvas.y - (rectH / 2);
                         int right = centerOfCanvas.x + (rectW / 2);
@@ -102,17 +96,5 @@ public class Character1 extends CharacterGOC
         }
     }
 
-    @Override
-    public void onTick()
-    {
-        Log.d("Tick", "Tick Character 1");
-        this.currentBMP = array_bitmaps.get(nextIndex);
-         nextIndex += 1;
-         if(nextIndex >= array_bitmaps.size()){
-             nextIndex = 0;
-         }
-
-    }
-
-   
+    public abstract void clickAction();
 }
