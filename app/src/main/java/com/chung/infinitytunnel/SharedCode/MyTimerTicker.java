@@ -1,5 +1,8 @@
 package com.chung.infinitytunnel.SharedCode;
+import android.util.Log;
+
 import com.chung.infinitytunnel.Character1.Character1;
+import com.chung.infinitytunnel.Character1.CharacterGOC;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -30,12 +33,10 @@ public class MyTimerTicker {
     }
 
     private void onTick() {
-        // Implement your periodic task here
-        //System.out.println("Tick");
         listener.onTick();
     }
 
-    public void setListener(Character1 character1) {
-        this.listener = character1;
+    public void setListener(CharacterGOC character) {
+        this.listener = character;
     }
 }
