@@ -1,13 +1,13 @@
 package com.chung.infinitytunnel.Characters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.PixelFormat;
 import android.util.Log;
 
 import com.chung.infinitytunnel.R;
-import com.chung.infinitytunnel.SharedCode.MyTimerTicker;
 
+@SuppressLint("ViewConstructor")
 public class Character1 extends CharacterGOC
 {
 
@@ -21,7 +21,6 @@ public class Character1 extends CharacterGOC
 
         this.rectW = rectWidth;
         this.rectH = rectHeight;
-
 
 
         // Nạp hình ảnh từ tệp vào Bitmap

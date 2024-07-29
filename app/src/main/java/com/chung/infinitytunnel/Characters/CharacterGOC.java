@@ -96,6 +96,9 @@ public abstract class CharacterGOC extends SurfaceView implements SurfaceHolder.
     public void surfaceDestroyed(@NonNull SurfaceHolder holder) {
         running = false; // Dừng luồng vẽ khi SurfaceView bị hủy
         if (myTimerTicker != null) {
+            currentBMP = null;
+            centerOfCanvas = null;
+            array_bitmaps.clear();
             myTimerTicker.stop();
         }
     }

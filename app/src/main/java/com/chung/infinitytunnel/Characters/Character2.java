@@ -1,15 +1,13 @@
 package com.chung.infinitytunnel.Characters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.PixelFormat;
 import android.util.Log;
 
 import com.chung.infinitytunnel.R;
-import com.chung.infinitytunnel.SharedCode.MyTimerTicker;
 
-import java.util.ArrayList;
-
+@SuppressLint("ViewConstructor")
 public class Character2 extends CharacterGOC
 {
 
