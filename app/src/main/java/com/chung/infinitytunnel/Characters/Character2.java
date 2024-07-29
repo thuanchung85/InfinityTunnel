@@ -8,6 +8,8 @@ import android.util.Log;
 import com.chung.infinitytunnel.R;
 import com.chung.infinitytunnel.SharedCode.MyTimerTicker;
 
+import java.util.ArrayList;
+
 public class Character2 extends CharacterGOC
 {
 
@@ -21,26 +23,21 @@ public class Character2 extends CharacterGOC
         this.rectH = rectHeight;
 
         // Nạp hình ảnh từ tệp vào Bitmap
-        Bitmap bitmap = android.graphics.BitmapFactory.decodeResource(getResources(), R.drawable.character_f2);
-        array_bitmaps.add(bitmap);
-        Bitmap bitmap2 = android.graphics.BitmapFactory.decodeResource(getResources(), R.drawable.character_f3);
-        array_bitmaps.add(bitmap2);
+        //array of bitmaps
+        array_bitmaps.add(android.graphics.BitmapFactory.decodeResource(getResources(), R.drawable.character_f2));
+        array_bitmaps.add(android.graphics.BitmapFactory.decodeResource(getResources(), R.drawable.character_f3));
 
         currentBMP= array_bitmaps.get(0);
 
 
-        //active timer
-        myTimerTicker = new MyTimerTicker();
-        myTimerTicker.setListener(this);
 
-        this.setClickable(true);
     }
 
 
     @Override
     public void onTick()
     {
-        Log.d("Tick", "Tick Character 2");
+        Log.d("Tick", "Tick Character 2 animation");
         this.currentBMP = array_bitmaps.get(nextIndex);
         nextIndex += 1;
         if(nextIndex >= array_bitmaps.size()){

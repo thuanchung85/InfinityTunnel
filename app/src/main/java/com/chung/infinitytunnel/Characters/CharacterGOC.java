@@ -34,7 +34,11 @@ public abstract class CharacterGOC extends SurfaceView implements SurfaceHolder.
         super(context);
         getHolder().addCallback(this);
 
+        //active timer
+        myTimerTicker = new MyTimerTicker();
+        myTimerTicker.setListener(this);
 
+        this.setClickable(true);
 
     }
 
@@ -58,7 +62,7 @@ public abstract class CharacterGOC extends SurfaceView implements SurfaceHolder.
         int canvasH = getHeight();
         centerOfCanvas = new Point(canvasW / 2, canvasH / 2);
 
-        //chạy update
+        //chạy update show currentBMP theo timer tick để tạo hoạt cảnh
         new Thread(() -> {
             while (running) {
                 Canvas canvas = holder.lockCanvas();

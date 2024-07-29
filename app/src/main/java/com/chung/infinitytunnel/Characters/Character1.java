@@ -25,28 +25,19 @@ public class Character1 extends CharacterGOC
 
 
         // Nạp hình ảnh từ tệp vào Bitmap
-        Bitmap bitmap = android.graphics.BitmapFactory.decodeResource(getResources(), R.drawable.character_f1);
-        array_bitmaps.add(bitmap);
-
-        Bitmap bitmap2 = android.graphics.BitmapFactory.decodeResource(getResources(), R.drawable.character_f2);
-        array_bitmaps.add(bitmap2);
-
-
+        array_bitmaps.add(android.graphics.BitmapFactory.decodeResource(getResources(), R.drawable.character_f1));
+        array_bitmaps.add(android.graphics.BitmapFactory.decodeResource(getResources(), R.drawable.character_f2));
 
         currentBMP= array_bitmaps.get(0);
 
-        //active timer
-        myTimerTicker = new MyTimerTicker();
-        myTimerTicker.setListener(this);
 
-        this.setClickable(true);
     }
 
 
     @Override
     public void onTick()
     {
-        Log.d("Tick", "Tick Character 1");
+        Log.d("Tick", "Tick Character 1 animation");
         this.currentBMP = array_bitmaps.get(nextIndex);
          nextIndex += 1;
          if(nextIndex >= array_bitmaps.size()){
